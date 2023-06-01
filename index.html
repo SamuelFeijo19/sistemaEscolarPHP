@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div id="sidebar">
+        <ul>
+          <li class="dropdown">
+            <a href="#" class="dropdown-btn">Professores</a>
+            <div class="dropdown-content">
+              <a href="views/professorCreate.html">Novo Professor</a>
+              <a href="views/list/listarProfessores.php">Lista de Professores</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-btn">Alunos</a>
+            <div class="dropdown-content">
+              <a href="views/alunoCreate.html">Novo Aluno</a>
+              <a href="views/list/listarAlunos.php">Lista de Alunos</a>
+            </div>
+          </li>          
+          <li class="dropdown">
+            <a href="#" class="dropdown-btn">Cursos</a>
+            <div class="dropdown-content">
+              <a href="views/cursoCreate.html">Novo Curso</a>
+              <a href="views/list/listarCursos.php">Lista de Cursos</a>
+            </div>
+          </li>        
+        </ul>
+      </div>
+  <div id="content">
+    <h1>Bem-vindo ao Sistema Escolar</h1>
+    <br>
+    <div class="card-container">
+        <div class="card">
+          <img src="img/aluno.png" alt="Imagem do card">
+          <div class="card-content">
+            <h3>Alunos</h3>
+            <p>Clique abaixo para visualizar alunos cadastrados na instituição</p>
+            <a href="views/list/listarAlunos.php" class="btn">Buscar</a>
+          </div>
+        </div>
+      
+        <div class="card">
+          <img src="img/professor.jpg" alt="Imagem do card">
+          <div class="card-content">
+            <h3>Professores</h3>
+            <p>Clique abaixo para visualizar professores cadastrados na instituição</p>
+            <a href="views/list/listarProfessores.php" class="btn">Buscar</a>
+          </div>
+        </div>
+      
+        <div class="card">
+          <img src="img/cursos.jpg" alt="Imagem do card">
+          <div class="card-content">
+            <h3>Cursos</h3>
+            <p>Clique abaixo para visualizar cursos cadastrados na instituição</p>
+            <a href="views/list/listarCursos.php" class="btn">Buscar</a>
+          </div>
+        </div>
+      </div>
+  </div>
+</body>
+</html>
