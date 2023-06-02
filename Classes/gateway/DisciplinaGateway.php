@@ -14,7 +14,7 @@
     //Utilizando Table Data Gateway - ponte entre o objeto de negócios e o banco de dados
     
     //Classe ProdutoGateway
-    class AlunoGateway {
+    class DisciplinaGateway {
         //pode ser acessado diretamente sem a necessidade de que você instancie 
         //a classe onde ele foi declarado
         private static $conn;
@@ -29,7 +29,7 @@
 
         //Método find() - buscar
         public function find ($id, $class = 'stdClass') {
-            $sql = "SELECT * FROM aluno WHERE id = '$id'";
+            $sql = "SELECT * FROM disciplina WHERE id = '$id'";
             print "$sql <br>\n";
             $result = self::$conn->query($sql);
             //fetchObject() retornar a próxima linha (registro) como um objeto
@@ -38,18 +38,18 @@
 
         //Método all()
         public function all ($filter, $class = 'stdClass') {
-            $sql = "SELECT * FROM aluno ";
+            $sql = "SELECT * FROM disciplina ";
             if ($filter) {
                 $sql .= "WHERE $filter";
             }
-            // print "$sql <br>\n";
+            print "$sql <br>\n";
             $result = self::$conn->query($sql);
             return $result->fetchAll(PDO::FETCH_CLASS, $class); //retorna um array de objetos
         }//Fim do método all()
 
         //Método delete()
         public function delete ($id) {
-            $sql = "DELETE FROM aluno WHERE id = '$id'";
+            $sql = "DELETE FROM disciplina WHERE id = '$id'";
             print "$sql <br>\n";
             return self::$conn->query($sql);
         }//Fim do método delete()
@@ -58,14 +58,14 @@
         public function save ($data) {
             if (empty($data->id)) { //Id não localizado - Insere
                 $id = $this->getLastId() + 1;
-                $sql = "INSERT INTO aluno 
-                (id, nomeAluno, matriculaAluno) VALUES ('{$id}', '{$data->nomeAluno}', 
-                '{$data->matriculaAluno}')"; 
+                $sql = "INSERT INTO disciplina 
+                (id, nomeDisciplina, cargaHorariaDisciplina) VALUES ('{$id}', '{$data->nomeDisciplina}', 
+                '{$data->cargaHorariaDisciplina}')"; 
             }
             else { //Id localizado - Atualiza
-                $sql = "UPDATE aluno SET 
-                nomeAluno = '{$data->nomeAluno}', 
-                matriculaAluno = '{$data->matriculaAluno}' WHERE 
+                $sql = "UPDATE disciplina SET 
+                nomeDisciplina = '{$data->nomeDisciplina}', 
+                cargaHorariaDisciplina = '{$data->cargaHorariaDisciplina}' WHERE 
                 id = '{$data->id}'";
             }
             print "$sql <br>\n";
@@ -74,7 +74,7 @@
 
         //Método getLastId()
         public function getLastId() {
-            $sql = "SELECT max(id) as max FROM aluno";
+            $sql = "SELECT max(id) as max FROM disciplina";
             $result = self::$conn->query($sql);
             $data = $result->fetch(PDO::FETCH_OBJ);
             return $data->max;

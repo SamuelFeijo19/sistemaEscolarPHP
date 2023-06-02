@@ -1,0 +1,24 @@
+create database dbescolar;
+
+use dbescolar;
+
+CREATE TABLE aluno (
+  id int(4) PRIMARY KEY AUTO_INCREMENT,
+  nomeAluno varchar(40) NOT NULL,
+  matriculaAluno float NOT NULL
+);
+
+CREATE TABLE professor (
+  id int(4) PRIMARY KEY AUTO_INCREMENT,
+  nomeProfessor varchar(40) NOT NULL,
+  matriculaProfessor varchar(40) NOT NULL,
+  escolaridadeProfessor varchar(40) NOT NULL,
+  especialidadeProfessor varchar(40) NOT NULL
+);
+
+CREATE TABLE curso (
+  id int(4) PRIMARY KEY AUTO_INCREMENT,
+  nomeCurso varchar(40) NOT NULL,
+  cargaHorariaCurso int(4) NOT NULL
+);
+

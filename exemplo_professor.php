@@ -1,6 +1,6 @@
 <?php
-    require_once "C:\\xampp\htdocs\Tarefa\Classes\gateway\ProfessorGateway.php";
-    require_once "C:\\xampp\htdocs\Tarefa\Classes\Professor.php";
+    require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\ProfessorGateway.php";
+    require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Professor.php";
     $username = "root";
     $password = "";
 

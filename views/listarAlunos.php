@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/all.min.css">
-  <link rel="stylesheet" href="css/sb-admin-2.min.css">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="../css/all.min.css">
+  <link rel="stylesheet" href="../css/sb-admin-2.min.css">
+  <link rel="stylesheet" href="../css/index.css">
   <title>Document</title>
 </head>
 
@@ -21,7 +21,7 @@ background: linear-gradient(187deg, rgba(26,122,178,1) 15%, rgba(26,122,178,1) 7
 ">
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon">
-          <img src="img/icon.png" alt="" width="50" height="50">
+          <img src="../img/icon.png" alt="" width="50" height="50">
         </div>
         <div class="sidebar-brand-text mx-1"><strong>SIGAA</strong></div>
       </a>
@@ -152,7 +152,7 @@ background: linear-gradient(187deg, rgba(26,122,178,1) 15%, rgba(26,122,178,1) 7
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Usuario</span>
-                <img class="img-profile rounded-circle" src="img/user.png">
+                <img class="../img-profile rounded-circle" src="img/user.png">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -173,51 +173,84 @@ background: linear-gradient(187deg, rgba(26,122,178,1) 15%, rgba(26,122,178,1) 7
 
         </nav>
 
+        <!-- CONTENT -->
+        <div class="container-fluid">
+    <div style="width: 100%;">
         <div class="col col-12">
-          <h3>Bem vindo ao Sistema Escolar</h3>
-          <hr>
+            <h3>Alunos Cadastrados</h3>
+            <hr>
         </div>
 
-        <div class="cardContainer">
-          <div class="cardPubli">
-            <img src="img/aluno.png" alt="Imagem do card">
-            <div class="cardConteudo">
-              <h3>Alunos</h3>
-              <p>Clique abaixo para visualizar cursos cadastrados na instituição</p>
-              <a href="views/list/listarAlunos.php" class="btn">Buscar</a>
+        <style>
+          .button-container{
+              float: right;
+              padding-top: 20px;
+          }
+          @media (max-width: 650px) {
+              .button-container {
+                  float: none;
+                  padding-top: 10px;
+                  width: 100%;
+              }
+              .btn {
+                  width: 100%;
+              }
+          }
+        </style>
+            <div class="button-container d-flex flex-column-reverse justify-content-center">
+              <a href="alunoCreate.html" class="btn btn-primary">
+                  Adicionar Aluno
+              </a>
             </div>
-          </div>
+            <br><br><br>
 
-          <div class="cardPubli">
-            <img src="img/professor.jpg" alt="Imagem do card">
-            <div class="cardConteudo">
-              <h3>Professores</h3>
-              <p>Clique abaixo para visualizar cursos cadastrados na instituição</p>
-              <a href="views/professorCreate.html" class="btn">Buscar</a>
-            </div>
-          </div>
+        <div class="w-100">
+            <div class="list-group">
+                
+            <?php
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\AlunoGateway.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Aluno.php";
+            $username = "root";
+            $password = "";
 
-          <div class="cardPubli">
-            <img src="img/cursos.jpg" alt="Imagem do card">
-            <div class="cardConteudo">
-              <h3>Cursos</h3>
-              <p>Clique abaixo para visualizar cursos cadastrados na instituição</p>
-              <a href="views/cursoCreate.html" class="btn">Buscar</a>
-            </div>
-          </div>
+            try{
+                $conn = new PDO ('mysql:host=localhost; dbname=dbescolar', $username, $password);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                Aluno::setConnection($conn);
 
-          <div class="cardPubli">
-            <img src="img/disciplina.jpg" alt="Imagem do card">
-            <div class="cardConteudo">
-              <h3>Disciplinas</h3>
-              <p>Clique abaixo para visualizar disciplinas cadastrados na instituição</p>
-              <a href="views/disciplinaCreate.html" class="btn">Buscar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      </main>
+                $alunos = Aluno::all(); //retorna todos os objetos da tabela
 
+                //Início do foreach() para exclusão
+                  foreach ($alunos as $aluno) {
+                    echo '<div class="list-group-item shadow-sm">';
+                    echo    '<div class="row">';
+                    echo      '<div class="col">';
+                    echo        '<p class="mb-1"><b>Nome do Aluno: </b>' . $aluno->nomeAluno . '</p>';
+                    echo        '<small class="text-muted"><b>matrícula do Aluno: </b>' . $aluno->matriculaAluno . '</small>';
+                    echo        '<br>';
+                    echo      '</div>';
+                    echo    '</div>';
+                    echo '</div>';
+                    echo '</br>';
+
+                }//Fim do foreach()
+                echo '</div>';
+                echo '</div>';
+
+                // $b1 = Professor::all();
+                // print 'Nome do Professor: '.$b1->nomeProfessor. "<br>\n";
+                // print 'Matrícula do Professor: '.$b1->matriculaProfessor. ". <br>\n";
+
+            } catch (Exception $e) {
+                print $e->getMessage();
+            }
+          ?>
+
+                    
+    </div>
+</div>
+
+</div>
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">

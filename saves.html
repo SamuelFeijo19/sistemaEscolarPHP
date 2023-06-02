@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    <div style="width: 100%;">
+        <div class="col col-12">
+            <h3>Eventos Cadastrados</h3>
+            <hr>
+        </div>
+
+        {{--Componente do Botão de Adicionar--}}
+        <x-adicionar.adicionar-button link-route="{{ route('eventos.create') }}" text-button="Novo Evento" />
+
+        {{--Componente do Botão de Pesquisa--}}
+            <x-search.search-button placeholder="  Digite o nome do evento ..." form-action="{{ route('eventos.index') }}" />
+
+        <div class="w-100">
+            <div class="list-group">
+                @foreach ($eventos as $evento)
+                    <div class="list-group-item shadow-sm">
+                        <div class="row">
+
+                            {{--Componente da Listagem dos dados do Evento--}}
+                            <x-evento.evento-listar :evento="$evento"/>
+
+                            <div class="col d-flex justify-content-center align-items-center">
+                                <div class="text-right">
+                                    <a href="{{route('eventos.participante.create', $evento->id)}}" title="ADICIONAR PARTICIPANTES">
+                                        <span class="material-symbols-outlined text-success">person_add</span>
+                                    </a>
+                                    <a href="{{route('ministrante.index', $evento->id)}}" title="ADICIONAR MINISTRANTE">
+                                        <span class="material-symbols-outlined text-success">school</span>
+                                    </a>
+                                    <a href="{{route('eventos.edit', $evento->id)}}">
+                                        <span class="material-symbols-outlined">edit_note</span>
+                                    </a>
+                                    <a href="{{route('conteudo.index', $evento->id)}}" title="ADICIONAR CONTEÚDO">
+                                        <span class="material-symbols-outlined text-success">description</span>
+                                    </a>
+                                    <a href="{{route('presenca.index', ['evento_id' => $evento->id])}}" title="LANÇAR PRESENÇA">
+                                        <span class="material-symbols-outlined text-warning">event</span>
+                                    </a>
+                                    <a href="#" class="delete" data-route="{{route('eventos.destroy', $evento->id)}}">
+                                        <span class="material-symbols-outlined text-danger">delete</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                @endforeach
+            </div>
+            <div class="d-flex justify-content-center my-4">
+                {{ $eventos->links('vendor.pagination.bootstrap-4') }}
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<br>
