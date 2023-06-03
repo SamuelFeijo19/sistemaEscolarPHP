@@ -29,7 +29,7 @@
         <div class="container-fluid">
     <div style="width: 100%;">
         <div class="col col-12">
-            <h3>Alunos Cadastrados</h3>
+            <h3>Cursos Cadastrados</h3>
             <hr>
         </div>
 
@@ -50,8 +50,8 @@
           }
         </style>
             <div class="button-container d-flex flex-column-reverse justify-content-center">
-              <a href="alunoCreate.html" class="btn btn-primary">
-                  Adicionar Aluno
+              <a href="cursoCreate.html" class="btn btn-primary">
+                  Novo Curso
               </a>
             </div>
             <br><br><br>
@@ -60,25 +60,25 @@
             <div class="list-group">
                 
             <?php
-            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\AlunoGateway.php";
-            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Aluno.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\CursoGateway.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Curso.php";
             $username = "root";
             $password = "";
 
             try{
                 $conn = new PDO ('mysql:host=localhost; dbname=dbescolar', $username, $password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                Aluno::setConnection($conn);
+                Curso::setConnection($conn);
 
-                $alunos = Aluno::all(); //retorna todos os objetos da tabela
+                $cursos = Curso::all(); //retorna todos os objetos da tabela
 
                 //Início do foreach() para exclusão
-                  foreach ($alunos as $aluno) {
+                  foreach ($cursos as $curso) {
                     echo '<div class="list-group-item shadow-sm">';
                     echo    '<div class="row">';
                     echo      '<div class="col">';
-                    echo        '<p class="mb-1"><b>Nome do Aluno: </b>' . $aluno->nomeAluno . '</p>';
-                    echo        '<small class="text-muted"><b>matrícula do Aluno: </b>' . $aluno->matriculaAluno . '</small>';
+                    echo        '<p class="mb-1"><b>Nome do Curso: </b>' . $curso->nomeCurso . '</p>';
+                    echo        '<small class="text-muted"><b>Carga Horária do Curso : </b>' . $curso->cargaHorariaCurso . ' Horas</small>';
                     echo        '<br>';
                     echo      '</div>';
                     echo    '</div>';
@@ -103,10 +103,8 @@
 </div>
 
 </div>
-
-  <!-- SIDEBAR -->
+  <!-- FOOTER -->
   <?php include '../views/layouts/footer.html'; ?>
-      
 </body>
 
 </html>
