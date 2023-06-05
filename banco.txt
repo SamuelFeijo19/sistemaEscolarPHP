@@ -22,3 +22,18 @@ CREATE TABLE curso (
   cargaHorariaCurso int(4) NOT NULL
 );
 
+CREATE TABLE disciplina (
+  id int(4) PRIMARY KEY AUTO_INCREMENT,
+  nomeDisciplina varchar(40) NOT NULL,
+  cargaHorariaDisciplina int(4) NOT NULL
+);
+
+CREATE TABLE caracteristicas (
+  id int(4) PRIMARY KEY AUTO_INCREMENT,
+  nome varchar(30) NOT NULL,
+  valor varchar(30) NOT NULL,
+  codigoAluno int(4),
+  codigoProfessor int(4),
+  FOREIGN KEY (codigoAluno) REFERENCES aluno(id) ON DELETE CASCADE,
+  FOREIGN KEY (codigoProfessor) REFERENCES professor(id) ON DELETE CASCADE
+);

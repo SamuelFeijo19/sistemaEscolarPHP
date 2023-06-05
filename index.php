@@ -64,7 +64,7 @@
             <div class="cardConteudo">
               <h3>Disciplinas</h3>
               <p>Clique abaixo para visualizar disciplinas cadastrados na instituição</p>
-              <a href="views/disciplinaCreate.html" class="btn">Buscar</a>
+              <a href="views/listarDisciplinas.php" class="btn">Buscar</a>
             </div>
           </div>
         </div>

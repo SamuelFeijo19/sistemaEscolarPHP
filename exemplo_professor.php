@@ -16,8 +16,17 @@
         $p1->matriculaProfessor = $_POST['matricula'];
         $p1->escolaridadeProfessor = $_POST['escolaridade'];
         $p1->especialidadeProfessor = $_POST['especialidade'];
-        $p1->save();
 
+                // Adicionando características ao Professor
+                $caracteristicas = [];
+                for ($i = 0; $i < count($_POST['nomeCaracteristica']); $i++) {
+                    $nome = $_POST['nomeCaracteristica'][$i];
+                    $valor = $_POST['valor'][$i];
+                    $caracteristicas[] = array("nome" => $nome, "valor" => $valor);
+                }
+                $p1->caracteristicas = $caracteristicas;
+        
+                $p1->save();
     } catch (Exception $e) {
         print $e->getMessage();
     }

@@ -18,20 +18,20 @@
 <?php include '../views/layouts/sidebar.html'; ?>
 
 <div id="content-wrapper" class="d-flex flex-column">
-           
- <!-- NAVBAR -->
-<div id="content">
-<?php include '../views/layouts/navbar.html'; ?>
-           
-<!-- CONTENT -->
+
+  <!-- NAVBAR -->
+  <div id="content">
+  <?php include '../views/layouts/navbar.html'; ?>
+
+  <!-- CONTENT -->
 <div class="container">
   <div class="row">
       <div class="col col-12">
-          <h3>Cadastro de Alunos</h3>
+          <h3>Cadastro de Professores</h3>
           <hr>
       </div>
       <div class="col col-12 m-auto">
-          <form id="formulario_registro" method="post" action="../exemplo_aluno.php">
+          <form id="formulario_registro" method="post" action="../exemplo_professor.php">
               <br>
               <div class="card">
                   <div class="card-header text-center bg-primary" id="headingOne" style="
@@ -39,7 +39,7 @@
                   ">
                       <h5 class="mb-0">
                           <input type="button" class="btn btn-link text-white font-weight-bold"
-                                 value="DADOS DO ALUNO">
+                                 value="DADOS DO PROFESSOR">
                       </h5>
                   </div>
 
@@ -49,9 +49,9 @@
                           <div class="row">
                               <div class="col">
                                   <div class="form-group">
-                                      <label for="nome">Nome do Aluno:</label>
+                                      <label for="nome">Nome do Professor:</label>
                                       <input type="text" class="form-control" name="nome"
-                                             id="nome" placeholder="Nome do Aluno:" required>
+                                             id="nomeEvento" placeholder="Nome do Professor:" required>
                                   </div>
                               </div>
                           </div>
@@ -59,23 +59,44 @@
                           <div class="row">
                               <div class="col">
                                   <div class="form-group">
-                                      <label for="matricula">Matrícula do Aluno:</label>
+                                      <label for="matricula">Matrícula do Professor:</label>
                                       <input type="text" class="form-control" name="matricula"
-                                             id="matricula" placeholder="Matrícula do Aluno:" required>
+                                             id="matricula" placeholder="Matrícula do Professor:" required>
                                   </div>
                               </div>
                           </div>
 
+                          
                           <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="matricula">Característica do Aluno (Nome):</label>
+                                    <label for="escolaridade">Escolaridade do Professor:</label>
+                                    <input type="text" class="form-control" name="escolaridade"
+                                           id="escolaridade" placeholder="Escolaridade do Professor:" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col">
+                              <div class="form-group">
+                                  <label for="especialidade">Especialidade do Professor:</label>
+                                  <input type="text" class="form-control" name="especialidade"
+                                         id="especialidade" placeholder="Especialidade do Professor:" required>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="matricula">Característica do Professor (Nome):</label>
                                     <input type="text" class="form-control" name="nomeCaracteristica[]" placeholder="Nome da Característica" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="matricula">Característica do Aluno (Valor):</label>
+                                    <label for="matricula">Característica do Professor (Valor):</label>
                                     <input type="text" class="form-control" name="valor[]" placeholder="Valor da Característica" required>
                                 </div>
                             </div>
@@ -95,9 +116,8 @@
   </div>
     </div>
   </div>
-
-    <!-- NAVBAR -->
-    <?php include '../views/layouts/footer.html'; ?>
+  <!-- SIDEBAR -->
+  <?php include '../views/layouts/footer.html'; ?>
 </div>
 </body>
 

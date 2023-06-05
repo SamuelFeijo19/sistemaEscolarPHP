@@ -16,8 +16,8 @@
 <body id="page-top">
   <div id="wrapper">
 
-        <!-- SIDEBAR -->
-        <?php include '../views/layouts/sidebar.html'; ?>
+<!-- SIDEBAR -->
+<?php include '../views/layouts/sidebar.html'; ?>
 
 <div id="content-wrapper" class="d-flex flex-column">
 

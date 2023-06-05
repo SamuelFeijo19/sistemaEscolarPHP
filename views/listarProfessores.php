@@ -177,7 +177,7 @@ background: linear-gradient(187deg, rgba(26,122,178,1) 15%, rgba(26,122,178,1) 7
         <div class="container-fluid">
     <div style="width: 100%;">
         <div class="col col-12">
-            <h3>Alunos Cadastrados</h3>
+            <h3>Professores Cadastrados</h3>
             <hr>
         </div>
 

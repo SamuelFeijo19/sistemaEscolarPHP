@@ -4,6 +4,7 @@
     class Aluno {
         private static $conn;
         private $data;
+        private $caracteristicas;
 
         //Método setConnection()
         public static function setConnection (PDO $conn) {

@@ -14,6 +14,16 @@
         $p1 = new Aluno;
         $p1->nomeAluno = $_POST['nome'];
         $p1->matriculaAluno = $_POST['matricula'];
+
+        // Adicionando características ao Aluno
+        $caracteristicas = [];
+        for ($i = 0; $i < count($_POST['nomeCaracteristica']); $i++) {
+            $nome = $_POST['nomeCaracteristica'][$i];
+            $valor = $_POST['valor'][$i];
+            $caracteristicas[] = array("nome" => $nome, "valor" => $valor);
+        }
+        $p1->caracteristicas = $caracteristicas;
+
         $p1->save();
 
     } catch (Exception $e) {

@@ -55,22 +55,34 @@
         }//Fim do método delete()
 
         //Método save()
-        public function save ($data) {
-            if (empty($data->id)) { //Id não localizado - Insere
+        public function save($data) {
+            if (empty($data->id)) {
                 $id = $this->getLastId() + 1;
                 $sql = "INSERT INTO aluno 
                 (id, nomeAluno, matriculaAluno) VALUES ('{$id}', '{$data->nomeAluno}', 
-                '{$data->matriculaAluno}')"; 
-            }
-            else { //Id localizado - Atualiza
+                '{$data->matriculaAluno}')";
+            } else {
                 $sql = "UPDATE aluno SET 
                 nomeAluno = '{$data->nomeAluno}', 
                 matriculaAluno = '{$data->matriculaAluno}' WHERE 
                 id = '{$data->id}'";
             }
-            print "$sql <br>\n";
-            return self::$conn->exec($sql); //executa a instrução SQL
-        }//Fim do método save()
+        
+            self::$conn->exec($sql);
+        
+            // Insere as características do aluno
+            $alunoId = isset($data->id) ? $data->id : $id;
+            if (!empty($data->caracteristicas)) {
+                foreach ($data->caracteristicas as $caracteristica) {
+                    $nome = $caracteristica['nome'];
+                    $valor = $caracteristica['valor'];
+                    $sql = "INSERT INTO caracteristicas (nome, valor, codigoAluno) VALUES (
+                    '{$nome}', '{$valor}', '{$alunoId}')";
+                    self::$conn->exec($sql);
+                }
+            }
+        }
+        //Fim do método save()
 
         //Método getLastId()
         public function getLastId() {
