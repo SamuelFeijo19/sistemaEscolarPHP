@@ -67,6 +67,7 @@
               <a href="views/listarDisciplinas.php" class="btn">Buscar</a>
             </div>
           </div>
+          
         </div>
       </div>
       </main>

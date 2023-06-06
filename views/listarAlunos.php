@@ -50,7 +50,7 @@
           }
         </style>
             <div class="button-container d-flex flex-column-reverse justify-content-center">
-              <a href="alunoCreate.html" class="btn btn-primary">
+              <a href="alunoCreate.php" class="btn btn-primary">
                   Adicionar Aluno
               </a>
             </div>

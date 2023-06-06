@@ -198,7 +198,7 @@ background: linear-gradient(187deg, rgba(26,122,178,1) 15%, rgba(26,122,178,1) 7
           }
         </style>
             <div class="button-container d-flex flex-column-reverse justify-content-center">
-              <a href="professorCreate.html" class="btn btn-primary">
+              <a href="professorCreate.php" class="btn btn-primary">
                   Novo Professor
               </a>
             </div>

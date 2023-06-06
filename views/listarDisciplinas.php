@@ -50,8 +50,8 @@
           }
         </style>
             <div class="button-container d-flex flex-column-reverse justify-content-center">
-              <a href="cursoCreate.html" class="btn btn-primary">
-                  Novo Curso
+              <a href="disciplinaCreate.php" class="btn btn-primary">
+                  Nova Disciplina
               </a>
             </div>
             <br><br><br>
