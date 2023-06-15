@@ -51,7 +51,7 @@
           <hr>
       </div>
       <div class="col col-12 m-auto">
-          <form id="formulario_registro" method="post" action="../exemplo_CursoDisciplina.php">
+          <form id="formulario_registro" method="post" action="../exemplo_ProfessorDisciplina.php">
               <br>
               <div class="card">
                   <div class="card-header text-center bg-primary" id="headingOne" style="

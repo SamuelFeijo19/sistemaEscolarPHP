@@ -61,7 +61,9 @@
                 
             <?php
             require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\DisciplinaGateway.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\ProfessorGateway.php";
             require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Disciplina.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Professor.php";
             require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\ProfessorDisciplinaGateway.php";
             require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\ProfessorDisciplina.php";
             $username = "root";
@@ -71,6 +73,7 @@
                 $conn = new PDO ('mysql:host=localhost; dbname=dbescolar', $username, $password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 Disciplina::setConnection($conn);
+                Professor::setConnection($conn);
                 ProfessorDisciplina::setConnection($conn);
 
                 $disciplinas = disciplina::all(); //retorna todos os objetos da tabela
@@ -92,24 +95,25 @@
                      // Imprimir as disciplinas do curso
                      echo '<div id="accordion">';
                      echo '<br>';
-                     echo '<p class="mb-1"><b>Disciplinas do Curso: </b></p>';
+                     echo '<p class="mb-1"><b>Professores da Disciplina: </b></p>';
                      foreach ($professorDisciplina as $profDisc) {
                          if ($profDisc->codigoProfessor == $disciplina->id) {
-                             $professor = Professor::find($profDisc->codigoProfessor);
+                             $professor = Professor::find($profDisc->codigoDisciplina);
  
-                             echo    $disciplina->nomeDisciplina;
+                             echo    $professor->nomeProfessor;
                              echo    '<br>';
                          }
                      }
                      echo '</div>';
-                 
+                     echo '</div>';
+
                      echo '</div>';
                      echo '</br>';
                  }
+                 echo '</div>';
+                 echo '</div>';
+                }
 
-                }//Fim do foreach()
-                echo '</div>';
-                echo '</div>';
 
                 // $b1 = Professor::all();
                 // print 'Nome do Professor: '.$b1->nomeProfessor. "<br>\n";

@@ -5,7 +5,7 @@ class ProfessorDisciplina {
 
     public static function setConnection(PDO $conn) {
         self::$conn = $conn;
-        ProfessorDisciplina::setConnection($conn);
+        ProfessorDisciplinaGateway::setConnection($conn);
 
     }
 
@@ -23,14 +23,14 @@ class ProfessorDisciplina {
 
     //Método all()
     public static function all($filter = '') {
-        $pdg = new ProfessorDisciplina;
+        $pdg = new ProfessorDisciplinaGateway;
         return $pdg->all($filter, 'ProfessorDisciplina');
     }//Fi
 
     public function save() {
-        $sql = "INSERT INTO ProfessorDisciplina (codigoCurso, codigoDisciplina) VALUES (:codigoProfessor, :codigoDisciplina)";
+        $sql = "INSERT INTO ProfessorDisciplina (codigoProfessor, codigoDisciplina) VALUES (:codigoProfessor, :codigoDisciplina)";
         $stmt = self::$conn->prepare($sql);
-        $stmt->bindValue(':codigoCurso', $this->codigoCurso, PDO::PARAM_INT);
+        $stmt->bindValue(':codigoProfessor', $this->codigoProfessor, PDO::PARAM_INT);
         $stmt->bindValue(':codigoDisciplina', $this->codigoDisciplina, PDO::PARAM_INT);
         $stmt->execute();
     }

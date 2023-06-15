@@ -10,7 +10,7 @@ $password = "";
 try {
     $conn = new PDO('mysql:host=localhost; dbname=dbescolar', $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    CursoDisciplina::setConnection($conn);
+    ProfessorDisciplina::setConnection($conn);
 
     // Obtém o ID do curso e da disciplina selecionados no formulário
     $codigoProfessor = $_POST['codigoProfessor'];
