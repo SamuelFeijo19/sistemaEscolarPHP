@@ -1,8 +1,8 @@
 <?php
-require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\CursoDisciplinaGateway.php";
-require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Curso.php";
+require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\ProfessorDisciplinaGateway.php";
+require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Professor.php";
 require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Disciplina.php";
-require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\CursoDisciplina.php";
+require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\ProfessorDisciplina.php";
 
 $username = "root";
 $password = "";
@@ -13,16 +13,16 @@ try {
     CursoDisciplina::setConnection($conn);
 
     // Obtém o ID do curso e da disciplina selecionados no formulário
-    $codigoCurso = $_POST['codigoCurso'];
+    $codigoProfessor = $_POST['codigoProfessor'];
     $codigoDisciplina = $_POST['codigoDisciplina'];
 
     // Cria um objeto CursoDisciplina e atribui os códigos do curso e disciplina
-    $cursoDisciplina = new CursoDisciplina();
-    $cursoDisciplina->codigoCurso = $codigoCurso;
-    $cursoDisciplina->codigoDisciplina = $codigoDisciplina;
+    $ProfessorDisciplina = new ProfessorDisciplina();
+    $ProfessorDisciplina->codigoProfessor = $codigoProfessor;
+    $ProfessorDisciplina->codigoDisciplina = $codigoDisciplina;
 
     // Salva o objeto na tabela CursoDisciplina
-    $cursoDisciplina->save();
+    $ProfessorDisciplina->save();
 
     echo "Inserção realizada com sucesso!";
 } catch (Exception $e) {

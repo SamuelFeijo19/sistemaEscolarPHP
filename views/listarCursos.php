@@ -67,7 +67,7 @@
             require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Disciplina.php";
             require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\CursoDisciplina.php";
             $username = "root";
-            $password = "root";
+            $password = "";
 
             try{
                 $conn = new PDO ('mysql:host=localhost; dbname=dbescolar', $username, $password);
@@ -96,23 +96,14 @@
                 
                     // Imprimir as disciplinas do curso
                     echo '<div id="accordion">';
+                    echo '<br>';
+                    echo '<p class="mb-1"><b>Disciplinas do Curso: </b></p>';
                     foreach ($cursoDisciplina as $cursoDisc) {
                         if ($cursoDisc->codigoCurso == $curso->id) {
                             $disciplina = Disciplina::find($cursoDisc->codigoDisciplina);
-                            echo '<div class="card">';
-                            echo    '<div class="card-header" id="heading' . $cursoDisc->codigoDisciplina . '">';
-                            echo        '<h5 class="mb-0">';
-                            echo            '<p class=""' . $cursoDisc->codigoDisciplina . '" ' . $cursoDisc->codigoDisciplina . '">';
-                            echo                $disciplina->nomeDisciplina;
-                            echo            '</p>';
-                            echo        '</h5>';
-                            echo    '</div>';
-                            echo    '<div id="collapse' . $cursoDisc->codigoDisciplina . '" class="collapse" aria-labelledby="heading' . $cursoDisc->codigoDisciplina . '" data-parent="#accordion">';
-                            echo        '<div class="card-body">';
-                            echo            'Conteúdo da disciplina';
-                            echo        '</div>';
-                            echo    '</div>';
-                            echo '</div>';
+
+                            echo    $disciplina->nomeDisciplina;
+                            echo    '<br>';
                         }
                     }
                     echo '</div>';
@@ -122,6 +113,7 @@
                 }
                 echo '</div>';
                 echo '</div>';
+                echo '<br><br>';
 
                 // $b1 = Professor::all();
                 // print 'Nome do Professor: '.$b1->nomeProfessor. "<br>\n";

@@ -29,7 +29,7 @@
         <div class="container-fluid">
     <div style="width: 100%;">
         <div class="col col-12">
-            <h3>Cursos Cadastrados</h3>
+            <h3>Disciplinas Cadastrados</h3>
             <hr>
         </div>
 
@@ -62,15 +62,19 @@
             <?php
             require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\DisciplinaGateway.php";
             require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Disciplina.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\ProfessorDisciplinaGateway.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\ProfessorDisciplina.php";
             $username = "root";
-            $password = "root";
+            $password = "";
 
             try{
                 $conn = new PDO ('mysql:host=localhost; dbname=dbescolar', $username, $password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 Disciplina::setConnection($conn);
+                ProfessorDisciplina::setConnection($conn);
 
                 $disciplinas = disciplina::all(); //retorna todos os objetos da tabela
+                $professorDisciplina = ProfessorDisciplina::all(); //retorna todos os objetos da tabela
 
                 //Início do foreach() para exclusão
                   foreach ($disciplinas as $disciplina) {
@@ -81,9 +85,27 @@
                     echo        '<small class="text-muted"><b>Carga Horária da Disciplina : </b>' . $disciplina->cargaHorariaDisciplina . ' Horas</small>';
                     echo        '<br>';
                     echo      '</div>';
+                    echo        '<a href="ProfessorDisciplinaCreate.php?id='.$disciplina->id. '">+</a>';
                     echo    '</div>';
                     echo '</div>';
-                    echo '</br>';
+
+                     // Imprimir as disciplinas do curso
+                     echo '<div id="accordion">';
+                     echo '<br>';
+                     echo '<p class="mb-1"><b>Disciplinas do Curso: </b></p>';
+                     foreach ($professorDisciplina as $profDisc) {
+                         if ($profDisc->codigoProfessor == $disciplina->id) {
+                             $professor = Professor::find($profDisc->codigoProfessor);
+ 
+                             echo    $disciplina->nomeDisciplina;
+                             echo    '<br>';
+                         }
+                     }
+                     echo '</div>';
+                 
+                     echo '</div>';
+                     echo '</br>';
+                 }
 
                 }//Fim do foreach()
                 echo '</div>';
@@ -93,7 +115,7 @@
                 // print 'Nome do Professor: '.$b1->nomeProfessor. "<br>\n";
                 // print 'Matrícula do Professor: '.$b1->matriculaProfessor. ". <br>\n";
 
-            } catch (Exception $e) {
+             catch (Exception $e) {
                 print $e->getMessage();
             }
           ?>

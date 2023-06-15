@@ -211,7 +211,7 @@ background: linear-gradient(187deg, rgba(26,122,178,1) 15%, rgba(26,122,178,1) 7
             require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\ProfessorGateway.php";
             require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Professor.php";
             $username = "root";
-            $password = "root";
+            $password = "";
 
             try{
                 $conn = new PDO ('mysql:host=localhost; dbname=dbescolar', $username, $password);
