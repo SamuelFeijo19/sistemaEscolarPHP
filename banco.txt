@@ -37,3 +37,11 @@ CREATE TABLE caracteristicas (
   FOREIGN KEY (codigoAluno) REFERENCES aluno(id) ON DELETE CASCADE,
   FOREIGN KEY (codigoProfessor) REFERENCES professor(id) ON DELETE CASCADE
 );
+
+CREATE TABLE CursoDisciplina (
+  id INT(4) PRIMARY KEY AUTO_INCREMENT,
+  codigoCurso INT(4),
+  codigoDisciplina INT(4),
+  FOREIGN KEY (codigoCurso) REFERENCES curso(id),
+  FOREIGN KEY (codigoDisciplina) REFERENCES disciplina(id)
+);

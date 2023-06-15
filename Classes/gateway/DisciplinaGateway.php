@@ -30,7 +30,6 @@
         //Método find() - buscar
         public function find ($id, $class = 'stdClass') {
             $sql = "SELECT * FROM disciplina WHERE id = '$id'";
-            print "$sql <br>\n";
             $result = self::$conn->query($sql);
             //fetchObject() retornar a próxima linha (registro) como um objeto
             return $result->fetchObject($class);

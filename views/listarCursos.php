@@ -61,31 +61,65 @@
                 
             <?php
             require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\CursoGateway.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\DisciplinaGateway.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\CursoDisciplinaGateway.php";
             require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Curso.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Disciplina.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\CursoDisciplina.php";
             $username = "root";
-            $password = "";
+            $password = "root";
 
             try{
                 $conn = new PDO ('mysql:host=localhost; dbname=dbescolar', $username, $password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 Curso::setConnection($conn);
+                Disciplina::setConnection($conn);
+
+                CursoDisciplina::setConnection($conn);
 
                 $cursos = Curso::all(); //retorna todos os objetos da tabela
-
+                $disciplina = Curso::all(); //retorna todos os objetos da tabela
+                $cursoDisciplina = CursoDisciplina::all(); //retorna todos os objetos da tabela
                 //Início do foreach() para exclusão
-                  foreach ($cursos as $curso) {
+                foreach ($cursos as $curso) {
                     echo '<div class="list-group-item shadow-sm">';
                     echo    '<div class="row">';
-                    echo      '<div class="col">';
+                    echo      '<div class="col line">';
+                    echo        '<div class="">';
                     echo        '<p class="mb-1"><b>Nome do Curso: </b>' . $curso->nomeCurso . '</p>';
-                    echo        '<small class="text-muted"><b>Carga Horária do Curso : </b>' . $curso->cargaHorariaCurso . ' Horas</small>';
+                    echo        '<small class="text-muted"><b>Carga Horária do Curso: </b>' . $curso->cargaHorariaCurso . ' Horas</small>';
                     echo        '<br>';
+                    echo        '</div>';
+                    echo        '<a href="CursoDisciplinaCreate.php?id='.$curso->id. '">+</a>';
                     echo      '</div>';
-                    echo    '</div>';
+                    echo '</div>';
+                
+                    // Imprimir as disciplinas do curso
+                    echo '<div id="accordion">';
+                    foreach ($cursoDisciplina as $cursoDisc) {
+                        if ($cursoDisc->codigoCurso == $curso->id) {
+                            $disciplina = Disciplina::find($cursoDisc->codigoDisciplina);
+                            echo '<div class="card">';
+                            echo    '<div class="card-header" id="heading' . $cursoDisc->codigoDisciplina . '">';
+                            echo        '<h5 class="mb-0">';
+                            echo            '<p class=""' . $cursoDisc->codigoDisciplina . '" ' . $cursoDisc->codigoDisciplina . '">';
+                            echo                $disciplina->nomeDisciplina;
+                            echo            '</p>';
+                            echo        '</h5>';
+                            echo    '</div>';
+                            echo    '<div id="collapse' . $cursoDisc->codigoDisciplina . '" class="collapse" aria-labelledby="heading' . $cursoDisc->codigoDisciplina . '" data-parent="#accordion">';
+                            echo        '<div class="card-body">';
+                            echo            'Conteúdo da disciplina';
+                            echo        '</div>';
+                            echo    '</div>';
+                            echo '</div>';
+                        }
+                    }
+                    echo '</div>';
+                
                     echo '</div>';
                     echo '</br>';
-
-                }//Fim do foreach()
+                }
                 echo '</div>';
                 echo '</div>';
 

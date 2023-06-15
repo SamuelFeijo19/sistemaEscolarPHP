@@ -63,7 +63,7 @@
             require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\DisciplinaGateway.php";
             require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Disciplina.php";
             $username = "root";
-            $password = "";
+            $password = "root";
 
             try{
                 $conn = new PDO ('mysql:host=localhost; dbname=dbescolar', $username, $password);

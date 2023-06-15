@@ -92,6 +92,18 @@ border-radius: 4px;
     text-decoration: none;
     border-radius: 4px;
   }
+  .line{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .line a{
+    background-color: green;
+    border-radius: 4px;
+    color: white;
+    font-size: 20px;
+    padding: .2rem 2rem;
+  }
   
   @media screen and (max-width: 768px) {
     .cardPubli {

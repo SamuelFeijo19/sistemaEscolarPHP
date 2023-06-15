@@ -22,7 +22,27 @@
  <!-- NAVBAR -->
 <div id="content">
 <?php include '../views/layouts/navbar.html'; ?>
-           
+    <?php
+                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\CursoGateway.php";
+                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Curso.php";
+                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\DisciplinaGateway.php";
+                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Disciplina.php";
+                $username = "root";
+                $password = "root";
+
+                try{
+                    $conn = new PDO ('mysql:host=localhost; dbname=dbescolar', $username, $password);
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    Curso::setConnection($conn);
+                    Disciplina::setConnection($conn);
+
+                    $cursos = Curso::find($_GET['id']); //retorna todos os objetos da tabela
+                    $disciplinas = disciplina::all(); //retorna todos os objetos da tabela
+                } catch (Exception $e) {
+                    print $e->getMessage();
+                }
+
+    ?>
 <!-- CONTENT -->
 <div class="container">
   <div class="row">
@@ -48,21 +68,29 @@
                       <div class="card-body">
                           <div class="row">
                               <div class="col">
-                                  <div class="form-group">
-                                      <label for="">Curso:</label>
-                                      <input type="number" class="form-control" name="codigoCurso"
-                                             id="codigoCurso" placeholder="Nome do Aluno:" required>
-                                  </div>
+                              <div class="form-group">
+                                <label for="">Curso:</label>
+                                <select class="form-control" name="codigoCurso" id="codigoCurso" required>
+                                    <?php
+                                        echo '<option value="' . $cursos->id . '">' . $cursos->nomeCurso . '</option>';
+                                    ?>
+                                </select>
+                               </div>
                               </div>
                           </div>
 
                           <div class="row">
                               <div class="col">
-                                  <div class="form-group">
-                                      <label for="">Disciplina:</label>
-                                      <input type="number" class="form-control" name="codigoDisciplina"
-                                             id="codigoDisciplina" placeholder="Matrícula do Aluno:" required>
-                                  </div>
+                              <div class="form-group">
+                                <label for="">Disciplina:</label>
+                                <select class="form-control" name="codigoDisciplina" id="codigoDisciplina" required>
+                                    <?php
+                                    foreach ($disciplinas as $disciplina) {
+                                        echo '<option value="' . $disciplina->id . '">' . $disciplina->nomeDisciplina . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                                </div>
                               </div>
                           </div>
                         </div>
