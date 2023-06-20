@@ -45,3 +45,9 @@ CREATE TABLE CursoDisciplina (
   FOREIGN KEY (codigoCurso) REFERENCES curso(id),
   FOREIGN KEY (codigoDisciplina) REFERENCES disciplina(id)
 );
+
+CREATE TABLE bolsa (
+   id int(4) PRIMARY KEY AUTO_INCREMENT, 
+   nomeBolsa varchar(40) NOT NULL, 
+   descricaoBolsa varchar(40) NOT NULL 
+);
