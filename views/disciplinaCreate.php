@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/sb-admin-2.min.css">
+  <link rel="stylesheet" href="../Public/css/sb-admin-2.min.css">
   <title>Document</title>
 </head>
 
@@ -31,7 +31,7 @@
           <hr>
       </div>
       <div class="col col-12 m-auto">
-          <form id="formulario_registro" method="post" action="../exemplo_disciplina.php">
+          <form id="formulario_registro" method="post" action="../Controllers/disciplinaController.php">
               <br>
               <div class="card">
                   <div class="card-header text-center bg-primary" id="headingOne" style="

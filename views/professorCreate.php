@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/sb-admin-2.min.css">
+  <link rel="stylesheet" href="../Public/css/sb-admin-2.min.css">
   <title>Document</title>
 </head>
 
@@ -22,7 +22,7 @@
   <!-- NAVBAR -->
   <div id="content">
   <?php include '../views/layouts/navbar.html'; ?>
-
+  
   <!-- CONTENT -->
 <div class="container">
   <div class="row">
@@ -31,7 +31,7 @@
           <hr>
       </div>
       <div class="col col-12 m-auto">
-          <form id="formulario_registro" method="post" action="../exemplo_professor.php">
+          <form id="formulario_registro" method="post" action="../Controllers/professorController.php">
               <br>
               <div class="card">
                   <div class="card-header text-center bg-primary" id="headingOne" style="
@@ -85,21 +85,6 @@
                                          id="especialidade" placeholder="Especialidade do Professor:" required>
                               </div>
                           </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="matricula">Característica do Professor (Nome):</label>
-                                    <input type="text" class="form-control" name="nomeCaracteristica[]" placeholder="Nome da Característica" required>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="matricula">Característica do Professor (Valor):</label>
-                                    <input type="text" class="form-control" name="valor[]" placeholder="Valor da Característica" required>
-                                </div>
-                            </div>
                         </div>
 
                           <div class="row">

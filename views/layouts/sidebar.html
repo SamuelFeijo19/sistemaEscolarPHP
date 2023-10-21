@@ -1,117 +1,58 @@
-<ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar" style="background: rgb(26,122,178);
-background: linear-gradient(187deg, rgba(26,122,178,1) 15%, rgba(26,122,178,1) 76%, rgba(54,151,212,1) 92%, rgba(90,188,255,1) 100%);
-">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon">
-          <img src="img/icon.png" alt="" width="50" height="50">
-        </div>
-        <div class="sidebar-brand-text mx-1"><strong>SIGAA</strong></div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-          <!-- <span class="material-symbols-outlined">
-                      home
-                  </span> -->
-          <span>Dashboard</span>
+  <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar" style="background: rgb(26,122,178);
+  background: linear-gradient(187deg, rgba(26,122,178,1) 15%, rgba(26,122,178,1) 76%, rgba(54,151,212,1) 92%, rgba(90,188,255,1) 100%);
+  ">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="http://localhost/sistemaEscolarPHP/index.php">
+          <div class="sidebar-brand-icon">
+            <img src="http://localhost/sistemaEscolarPHP/Public/img/icon.png" alt="" width="50" height="50">
+          </div>
+          <div class="sidebar-brand-text mx-1"><strong>SIGAA</strong></div>
         </a>
-      </li>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Interface
-      </div>
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-target="#collapseUtilities2" aria-expanded="true"
-          aria-controls="collapseUtilities2">
-          <!-- <span class="material-symbols-outlined">
-                      apartment
-                  </span> -->
-          <span>Professor</span>
-        </a>
-        <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities"
-          data-parent="#accordionSidebar">
-          <div class="bg-dark py-2 collapse-inner rounded d-sm-none">
-            <a class="collapse-item" href="{{route('secretarias.index')}}">Secretarias Cadastradas</a>
-            <a class="collapse-item" href="{{route('secretarias.create')}}">Nova Secretaria</a>
-          </div>
-          <div class="bg-transparent py-2 collapse-inner rounded d-none d-sm-block">
-            <a class="collapse-item" href="{{route('secretarias.index')}}">Secretarias Cadastradas</a>
-            <a class="collapse-item" href="{{route('secretarias.create')}}">Nova Secretaria</a>
-          </div>
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+          <a class="nav-link" href="http://localhost/sistemaEscolarPHP\index.php">
+            <!-- <span class="material-symbols-outlined">
+                        home
+                    </span> -->
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          Interface
         </div>
-      </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="http://localhost/sistemaEscolarPHP\views\listarProfessores.php">
+            <span>Professor</span>
+          </a>
+        </li>
 
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-target="#collapseTwo" aria-expanded="true"
-          aria-controls="collapseTwo">
-          <!-- <span class="material-symbols-outlined">
-                      event_available
-                  </span> -->
-          <span>Aluno</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-dark py-2 collapse-inner rounded d-sm-none">
-            <a class="collapse-item" href="{{route('eventos.index')}}">Eventos Cadastrados</a>
-            <a class="collapse-item" href="{{route('eventos.create')}}">Cadastrar Novo Evento</a>
-          </div>
-          <div class="bg-transparent py-2 collapse-inner rounded d-none d-sm-block">
-            <a class="collapse-item" href="{{route('eventos.index')}}">Eventos Cadastrados</a>
-            <a class="collapse-item" href="{{route('eventos.create')}}">Cadastrar Novo Evento</a>
-          </div>
-        </div>
-      </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="http://localhost/sistemaEscolarPHP\views\listarAlunos.php">
+            <span>Aluno</span>
+          </a>
+        </li>
 
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="http://localhost/sistemaEscolarPHP\views\listarCursos.php" >
+            <span>Cursos</span>
+          </a>
+        </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-target="#collapseUtilities" aria-expanded="true"
-          aria-controls="collapseUtilities">
-          <!-- <span class="material-symbols-outlined">
-                      group
-                  </span> -->
-          <span>Cursos</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-dark py-2 collapse-inner rounded d-sm-none">
-            <a class="collapse-item" href="{{route('participantes.index')}}">Participantes Cadastrados</a>
-            <a class="collapse-item" href="{{route('participantes.create')}}">Cadastrar Novo Participante</a>
-          </div>
-          <div class="bg-transparent py-2 collapse-inner rounded d-none d-sm-block">
-            <a class="collapse-item" href="{{route('participantes.index')}}">Participantes Cadastrados</a>
-            <a class="collapse-item" href="{{route('participantes.create')}}">Cadastrar Novo Participante</a>
-          </div>
-        </div>
-      </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="http://localhost/sistemaEscolarPHP\views\listarDisciplinas.php">
+            <span>Disciplinas</span>
+          </a>
+        </li>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="true"
-          aria-controls="collapseTwo">
-          <!-- <span class="material-symbols-outlined">
-                      fact_check
-                  </span> -->
-          <span>Matrículas</span>
-        </a>
-        <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-dark py-2 collapse-inner rounded d-sm-none">
-            <a class="collapse-item" href="{{route('matriculas.create')}}">Realizar Nova Matrícula</a>
-            <a class="collapse-item" href="{{route('matriculas.index')}}">Matrículas Realizadas</a>
-          </div>
-          <div class="bg-transparent py-2 collapse-inner rounded d-none d-sm-block">
-            <a class="collapse-item" href="{{route('matriculas.create')}}">Realizar Nova Matrícula</a>
-            <a class="collapse-item" href="{{route('matriculas.index')}}">Matrículas Realizadas</a>
-          </div>
-        </div>
-      </li>
-      <!-- Divider -->
-      <hr class="sidebar-divider">
+        <hr class="sidebar-divider">
 
-    </ul>
+      </ul>

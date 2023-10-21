@@ -1,3 +1,6 @@
+//BASTA RODAR O SCRIPT
+//NAO EXPORTEI O BANCO POIS TAVA MUITO BAGUNÇADO COM VARIOS INSERTS DE TESTE KKKK
+
 create database dbescolar;
 
 use dbescolar;
@@ -28,16 +31,6 @@ CREATE TABLE disciplina (
   cargaHorariaDisciplina int(4) NOT NULL
 );
 
-CREATE TABLE caracteristicas (
-  id int(4) PRIMARY KEY AUTO_INCREMENT,
-  nome varchar(30) NOT NULL,
-  valor varchar(30) NOT NULL,
-  codigoAluno int(4),
-  codigoProfessor int(4),
-  FOREIGN KEY (codigoAluno) REFERENCES aluno(id) ON DELETE CASCADE,
-  FOREIGN KEY (codigoProfessor) REFERENCES professor(id) ON DELETE CASCADE
-);
-
 CREATE TABLE CursoDisciplina (
   id INT(4) PRIMARY KEY AUTO_INCREMENT,
   codigoCurso INT(4),
@@ -46,8 +39,10 @@ CREATE TABLE CursoDisciplina (
   FOREIGN KEY (codigoDisciplina) REFERENCES disciplina(id)
 );
 
-CREATE TABLE bolsa (
-   id int(4) PRIMARY KEY AUTO_INCREMENT, 
-   nomeBolsa varchar(40) NOT NULL, 
-   descricaoBolsa varchar(40) NOT NULL 
+CREATE TABLE professordisciplina (
+  id INT(4) PRIMARY KEY AUTO_INCREMENT,
+  codigoProfessor INT(4),
+  codigoDisciplina INT(4),
+  FOREIGN KEY (codigoProfessor) REFERENCES professor(id),
+  FOREIGN KEY (codigoDisciplina) REFERENCES disciplina(id)
 );

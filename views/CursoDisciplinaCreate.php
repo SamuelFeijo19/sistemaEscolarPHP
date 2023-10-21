@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/sb-admin-2.min.css">
+  <link rel="stylesheet" href="../Public/css/sb-admin-2.min.css">
   <title>Document</title>
 </head>
 
@@ -23,21 +23,20 @@
 <div id="content">
 <?php include '../views/layouts/navbar.html'; ?>
     <?php
-                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\CursoGateway.php";
-                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Curso.php";
-                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\DisciplinaGateway.php";
-                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Disciplina.php";
-                $username = "root";
-                $password = "";
+                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\gateway\CursoGateway.php";
+                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\Curso.php";
+                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\gateway\DisciplinaGateway.php";
+                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\Disciplina.php";
+                require_once "../conexao/Conexao.php";
 
                 try{
-                    $conn = new PDO ('mysql:host=localhost; dbname=dbescolar', $username, $password);
-                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $conexao = new Conexao();
+                    $conn = $conexao->getConexao();
                     Curso::setConnection($conn);
                     Disciplina::setConnection($conn);
 
-                    $cursos = Curso::find($_GET['id']); //retorna todos os objetos da tabela
-                    $disciplinas = disciplina::all(); //retorna todos os objetos da tabela
+                    $cursos = Curso::find($_GET['id']); 
+                    $disciplinas = disciplina::all(); 
                 } catch (Exception $e) {
                     print $e->getMessage();
                 }
@@ -51,7 +50,7 @@
           <hr>
       </div>
       <div class="col col-12 m-auto">
-          <form id="formulario_registro" method="post" action="../exemplo_CursoDisciplina.php">
+          <form id="formulario_registro" method="post" action="../Controllers/cursoDisciplinaController.php">
               <br>
               <div class="card">
                   <div class="card-header text-center bg-primary" id="headingOne" style="

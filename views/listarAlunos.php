@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/all.min.css">
-  <link rel="stylesheet" href="../css/sb-admin-2.min.css">
-  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../Public/css/all.min.css">
+  <link rel="stylesheet" href="../Public/css/sb-admin-2.min.css">
+  <link rel="stylesheet" href="../Public/css/index.css">
   <title>Document</title>
 </head>
 
@@ -60,14 +60,13 @@
             <div class="list-group">
                 
             <?php
-            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\AlunoGateway.php";
-            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Aluno.php";
-            $username = "root";
-            $password = "";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\gateway\AlunoGateway.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\Aluno.php";
+            require_once "../conexao/Conexao.php";
 
             try{
-                $conn = new PDO ('mysql:host=localhost; dbname=dbescolar', $username, $password);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+              $conexao = new Conexao();
+              $conn = $conexao->getConexao();
                 Aluno::setConnection($conn);
 
                 $alunos = Aluno::all(); //retorna todos os objetos da tabela

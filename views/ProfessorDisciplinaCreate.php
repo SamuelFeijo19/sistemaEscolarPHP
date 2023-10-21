@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/sb-admin-2.min.css">
+  <link rel="stylesheet" href="../Public/css/sb-admin-2.min.css">
   <title>Document</title>
 </head>
 
@@ -23,21 +23,20 @@
 <div id="content">
 <?php include '../views/layouts/navbar.html'; ?>
     <?php
-                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\ProfessorGateway.php";
-                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Professor.php";
-                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\DisciplinaGateway.php";
-                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Disciplina.php";
-                $username = "root";
-                $password = "";
+                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\gateway\ProfessorGateway.php";
+                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\Professor.php";
+                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\gateway\DisciplinaGateway.php";
+                require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\Disciplina.php";
+                require_once "../conexao/Conexao.php";
 
                 try{
-                    $conn = new PDO ('mysql:host=localhost; dbname=dbescolar', $username, $password);
-                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $conexao = new Conexao();
+                    $conn = $conexao->getConexao();
                     Professor::setConnection($conn);
                     Disciplina::setConnection($conn);
 
-                    $disciplina = Disciplina::find($_GET['id']); //retorna todos os objetos da tabela
-                    $professores = Professor::all(); //retorna todos os objetos da tabela
+                    $disciplina = Disciplina::find($_GET['id']); 
+                    $professores = Professor::all(); 
                 } catch (Exception $e) {
                     print $e->getMessage();
                 }
@@ -51,7 +50,7 @@
           <hr>
       </div>
       <div class="col col-12 m-auto">
-          <form id="formulario_registro" method="post" action="../exemplo_ProfessorDisciplina.php">
+          <form id="formulario_registro" method="post" action="../Controllers/professorDisciplinaController.php">
               <br>
               <div class="card">
                   <div class="card-header text-center bg-primary" id="headingOne" style="
@@ -70,7 +69,7 @@
                               <div class="col">
                               <div class="form-group">
                                 <label for="">Disciplina:</label>
-                                <select class="form-control" name="codigoProfessor" id="codigoProfessor" required>
+                                <select class="form-control" name="codigoDisciplina" id="codigoDisciplina" required>
                                     <?php
                                         echo '<option value="' . $disciplina->id . '">' . $disciplina->nomeDisciplina . '</option>';
                                     ?>
@@ -83,7 +82,7 @@
                               <div class="col">
                               <div class="form-group">
                                 <label for="">Professor:</label>
-                                <select class="form-control" name="codigoDisciplina" id="codigoDisciplina" required>
+                                <select class="form-control" name="codigoProfessor" id="codigoProfessor" required>
                                     <?php
                                     foreach ($professores as $professor) {
                                         echo '<option value="' . $professor->id . '">' . $professor->nomeProfessor . '</option>';

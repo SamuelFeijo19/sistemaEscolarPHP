@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/all.min.css">
-  <link rel="stylesheet" href="../css/sb-admin-2.min.css">
-  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../Public/css/all.min.css">
+  <link rel="stylesheet" href="../Public/css/sb-admin-2.min.css">
+  <link rel="stylesheet" href="../Public/css/index.css">
   <title>Document</title>
 </head>
 
@@ -60,27 +60,25 @@
             <div class="list-group">
                 
             <?php
-            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\CursoGateway.php";
-            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\DisciplinaGateway.php";
-            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\gateway\CursoDisciplinaGateway.php";
-            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Curso.php";
-            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\Disciplina.php";
-            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Classes\CursoDisciplina.php";
-            $username = "root";
-            $password = "";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\gateway\CursoGateway.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\gateway\DisciplinaGateway.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\gateway\CursoDisciplinaGateway.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\Curso.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\Disciplina.php";
+            require_once "C:\\xampp\htdocs\sistemaEscolarPHP\Models\CursoDisciplina.php";
+            require_once "../conexao/Conexao.php";
 
             try{
-                $conn = new PDO ('mysql:host=localhost; dbname=dbescolar', $username, $password);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $conexao = new Conexao();
+                $conn = $conexao->getConexao();
                 Curso::setConnection($conn);
                 Disciplina::setConnection($conn);
 
                 CursoDisciplina::setConnection($conn);
 
-                $cursos = Curso::all(); //retorna todos os objetos da tabela
-                $disciplina = Curso::all(); //retorna todos os objetos da tabela
-                $cursoDisciplina = CursoDisciplina::all(); //retorna todos os objetos da tabela
-                //Início do foreach() para exclusão
+                $cursos = Curso::all(); 
+                $disciplina = Curso::all();
+                $cursoDisciplina = CursoDisciplina::all(); 
                 foreach ($cursos as $curso) {
                     echo '<div class="list-group-item shadow-sm">';
                     echo    '<div class="row">';
@@ -114,11 +112,6 @@
                 echo '</div>';
                 echo '</div>';
                 echo '<br><br>';
-
-                // $b1 = Professor::all();
-                // print 'Nome do Professor: '.$b1->nomeProfessor. "<br>\n";
-                // print 'Matrícula do Professor: '.$b1->matriculaProfessor. ". <br>\n";
-
             } catch (Exception $e) {
                 print $e->getMessage();
             }
